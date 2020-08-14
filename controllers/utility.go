@@ -7,23 +7,21 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
-var SessionData = make(map[string]string)
-
-func Session(sessName string) *http.Cookie {
+func Session(sesName string) *http.Cookie {
 	sID, _ := uuid.NewV4()
-	SessionData["uuid"] = sID.String()
+	// SessionData["uuid"] = sID.String()
 	// hhtp.Cookie will give pointer to the Cookie address
 	cook := &http.Cookie{
-		Name:  sessName,
-		Value: SessionData["uuid"],
+		Name:  sesName,
+		Value: sID.String(),
 	}
 	return cook
 }
 
-func SessionValue(key, value string) (map[string]string, error) {
+func SessionValue(key, value string, cook *http.Cookie) (*http.Cookie, error) {
 	if key != "" && value != "" {
-		SessionData[key] = value
-		return SessionData, nil
+		cook.Value = cook.Value + "|" + key + "=" + value
+		return cook, nil
 	}
 	return nil, errors.New("empty key or value")
 }

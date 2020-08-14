@@ -1,4 +1,4 @@
-$(document).on('change', '#email',function(){
+$(document).on('blur', '#email',function(){
        let loginId = $('#email').val()
         if( loginId != "")
         {
@@ -9,7 +9,7 @@ $(document).on('change', '#email',function(){
                             if (res == true ){
                                    $('#email').val('')
                                    $('#email').addClass('is-invalid')
-                                   // $('#email').after('<p style="color:#fe5461; font-size:12px;">Email already is in Use.</p>')
+                                   $('#email').after('<p style="color:#fe5461; font-size:12px;padding-top: 2%">Email already is in Use.</p>')
                              }
                       }
                       
@@ -17,8 +17,11 @@ $(document).on('change', '#email',function(){
         }
  })
 
- $(document).on('blur', '#form', function(){
+ $(document).on('change', '#form', function(){
         $('#form input[type=email]').each(function(){
-               $(this).removeClass('is-invalid')
+               if($(this).hasClass('is-invalid'))
+                 $(this).removeClass('is-invalid')
         })
  })
+
+ console.log(document.cookie)
