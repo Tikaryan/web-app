@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+       <head>
+              <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+               <link type="text/css" rel="stylesheet" href="resources/css/signup.css" />
+               <base href="/">
+       </head>
+       <body>
+              <div class="wrapper fadeInDown">
+                     <div id="formContent" class="fullWidth">
+                            <div class="fadeIn first">
+                                   <img src="resources/images/login-icon-3047.png" id="icon" alt="User Icon" />
+                            </div>
+                            <form action="/createUser" id="form" method="POST" data-toggle="validator">
+                                   <div class="form-group row fullWidth">
+                                          <label class="col-md-3 col-form-label">Full name</label>
+                                          <div class="col-sm-4">
+                                              <input type="text" class="form-control" id="first-name" name="firstName" required placeholder="First name" />
+                                          </div>
+                                          <div class="col-sm-4">
+                                              <input type="text" class="form-control" id="last-name" name="lastName" required placeholder="Last name" />
+                                          </div>
+                                   </div>
+                                   <div class="form-group row fullWidth" >
+                                          <label class="col-sm-3 col-form-label">Address</label>
+                                          <div class="col-sm-3">
+                                              <input type="text" class="form-control" name="city" required placeholder="city" />
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <input type="text" class="form-control" name="state" required placeholder="state" />
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <input type="text" class="form-control" name="zipcode" placeholder="zipcode" />
+                                          </div>
+                                   </div>
+                                   <div class="form-group row fullWidth">
+                                          <label class="col-md-3 col-form-label">Email</label>
+                                          <div class="col-sm-9 input-group">
+                                                 <div class="input-group-prepend" style="height: 41px;padding-top: 6px;">
+                                                        <span class="input-group-prepend input-group-text" id="inputGroupPrepend">@</span>
+                                                 </div>
+                                                 <input type="email" class="fullWidth form-control" id="email" name="email" required placeholder="Email" />
+                                          </div>
+                                         
+                                   </div>
+                                   <div class="form-group row fullWidth">
+                                          <label class="col-md-3 col-form-label">Password</label>
+                                          <div class="col-sm-9">
+                                              <input type="password" class="form-control" id="password" name="password" required placeholder="Password" />
+                                          </div>
+                                   </div>
+                                   <div class="form-group fourth">
+                                          <input type="submit" class="fadeIn" value="Sign Up">
+                                   </div>
+                            </form>
+                     </div>
+              </div>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+              <script src="resources/javascript/signup.js"></script>
+       </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+       <meta charset="utf-8">
+       <base href="/">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       <link type="text/css" rel="stylesheet" href="resources/css/login.css" />
+</head>
+
+<body>
+       <div class="wrapper fadeInDown" >
+              <div id="formContent">
+                     <!-- Tabs Titles -->
+
+                     <!-- Icon -->
+                     <div class="fadeIn first">
+                            <img src="resources/images/login-icon-3047.png" id="icon" alt="User Icon" />
+                     </div>
+
+                     <!-- Login Form -->
+                     <form action="/login" id="form" method="POST" data-toggle="validator">
+                            <div class="form-group">
+                                   <input type="email" name="userId" id="login" class="fadeIn form-control second" required  placeholder="login ID" required>
+                            </div>
+                            <div class="form-group">
+                                   <input type="password" name="password" id="password" class="fadeIn form-control third" required placeholder="password" required>
+                            </div>
+                            <div class="form-group">
+                                   <input type="submit" class="fadeIn fourth" value="Log In">
+                            </div>
+                     </form>
+
+                     <!-- Remind Passowrd -->
+                     <div id="formFooter">
+                            <a class="underlineHover" href="#">Forgot Password?</a>
+                     </div>
+
+              </div>
+       </div>
+       <base href="/">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+       <script src="resources/javascript/login.js"></script>
+
+</body>
+
+</html>
