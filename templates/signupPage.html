@@ -8,6 +8,14 @@
        </head>
        <body>
               <div class="wrapper fadeInDown">
+                     <div class="alert alert-success alert-dismissible custom-succss" id="alert-suc" style="display: none;" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Success! </strong>
+                     </div>
+                     <div class="alert alert-danger alert-dismissible custom-dangcss" id="alert-dang" style="display: none;" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Error! </strong>
+                     </div>
                      <div id="formContent" class="fullWidth">
                             <div class="fadeIn first">
                                    <img src="resources/images/login-icon-3047.png" id="icon" alt="User Icon" />
@@ -36,22 +44,22 @@
                                    </div>
                                    <div class="form-group row fullWidth">
                                           <label class="col-md-3 col-form-label">Email</label>
-                                          <div class="col-sm-9 input-group">
-                                                 <div class="input-group-prepend" style="height: 41px;padding-top: 6px;">
+                                          <div class="col-sm-9 row input-group">
+                                                 <div class="input-group-prepend col-sm-1" style="height: 41px;padding-top: 6px;padding-left: 4%;">
                                                         <span class="input-group-prepend input-group-text" id="inputGroupPrepend">@</span>
                                                  </div>
-                                                 <input type="email" class="fullWidth form-control" id="email" name="email" required placeholder="Email" />
+                                                        <input type="email" class="fullWidth form-control col-sm-8" id="email" name="email" required="" placeholder="Email">
                                           </div>
                                          
                                    </div>
                                    <div class="form-group row fullWidth">
                                           <label class="col-md-3 col-form-label">Password</label>
-                                          <div class="col-sm-9">
+                                          <div class="col-sm-7" style="padding-right: 20%;padding-left: 0%;">
                                               <input type="password" class="form-control" id="password" name="password" required placeholder="Password" />
                                           </div>
                                    </div>
                                    <div class="form-group fourth">
-                                          <input type="submit" class="fadeIn" value="Sign Up">
+                                          <input type="submit" class="fadeIn" value="Sign Up" onclick="validation()">
                                    </div>
                             </form>
                      </div>
@@ -59,5 +67,13 @@
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
               <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
               <script src="resources/javascript/signup.js"></script>
+              <script>
+              //       $.fn.validation = function(){
+              //        $('input#form').each(function(){
+              //               if ($(this).hasClass('is-invalid'))
+              //                      event.preventDefault()
+              //        })
+              //       }
+              </script>
        </body>
 </html>

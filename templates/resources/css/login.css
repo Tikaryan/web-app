@@ -64,8 +64,26 @@ html {
        border-radius: 0 0 10px 10px;
      }
      
+     .custom-succss{
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 10px 10px 10px 10px;
+      background: #8ede806e;
+      width: 35%;
+      padding-top: -1%;
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 30px 60px 0 rgb(125 181 135 / 50%);
+      text-align: center;
+     }
      
-     
+     .custom-dangcss{
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 10px 10px 10px 10px;
+      width: 35%;
+      padding-top: -1%;
+      -webkit-box-shadow: 0 30px 60px 0 rgb(124 46 46 / 93%);
+      box-shadow: 0 30px 60px 0 rgb(56 6 13 / 34%);
+      text-align: center;
+     }
      /* TABS */
      
      h2.inactive {

@@ -3,6 +3,8 @@ package config
 import (
 	"database/sql"
 	"fmt"
+
+	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
@@ -13,7 +15,6 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	defer DB.Close()
 	if err = DB.Ping(); err != nil {
 		panic(err)
 	}

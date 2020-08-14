@@ -1,7 +1,9 @@
 package data
 
 import (
+	"database/sql"
 	"errors"
+	"fmt"
 	"net/http"
 
 	"github.com/Tikaryan/web-app/config"
@@ -9,16 +11,17 @@ import (
 )
 
 func GetAllUsers() []models.User {
-	rows, err := config.DB.Query("Select * from go_users")
+	rows, err := config.DB.Query("SELECT * FROM go_users")
 	if err != nil {
 		panic(err)
 	}
-	rows.Close()
+	fmt.Println("*****getAllquery******")
+	defer rows.Close()
 	users := make([]models.User, 0)
 	for rows.Next() {
 		// usr := new(models.User)
 		usr := models.User{}
-		err = rows.Scan(&usr.ID, &usr.FirstName, &usr.LastName, &usr.City, &usr.State, &usr.Email, &usr.Zipcode, &usr.Password) // order matters
+		err = rows.Scan(&usr.ID, &usr.Email, &usr.FirstName, &usr.LastName, &usr.City, &usr.State, &usr.Zipcode, &usr.Password) // order matters
 		if err != nil {
 			panic(err)
 		}
@@ -38,7 +41,7 @@ func SaveUser(req *http.Request) (string, error) {
 	newUser.Password = []byte(req.FormValue("password"))
 
 	if newUser.FirstName == "" || newUser.LastName == "" || newUser.Email == "" || newUser.Password == nil {
-		return "", errors.New("400. Bad request. All fields must be complete")
+		return "", errors.New("400. Bad request, All fields must be complete")
 
 	}
 	_, err := config.DB.Exec("INSERT INTO go_users (firstName,lastName,city,state,zipcode,email,password) VALUES ($1,$2,$3,$4,$5,$6,$7)",
@@ -47,6 +50,23 @@ func SaveUser(req *http.Request) (string, error) {
 	if err != nil {
 		return "", errors.New("500. Internal Server Error." + err.Error())
 	}
-	msg := "Success" + newUser.Email + "is saved"
+	msg := newUser.Email + " is saved."
 	return msg, nil
+}
+
+func LoginUser(res http.ResponseWriter, req *http.Request) (*models.User, error) {
+	userID := req.FormValue("email")
+	pass := []byte(req.FormValue("password"))
+
+	row := config.DB.QueryRow("Select * from go_users where email = $1 AND password $2", userID, pass)
+	usr := models.User{}
+	err := row.Scan(&usr.ID, &usr.Email, &usr.FirstName, &usr.LastName, &usr.City, &usr.State, &usr.Zipcode, &usr.Password) // order matters
+	switch {
+	case err == sql.ErrNoRows:
+		return nil, errors.New(http.StatusText(500))
+	case err != nil:
+		return nil, errors.New(http.StatusText(404))
+
+	}
+	return &usr, nil
 }

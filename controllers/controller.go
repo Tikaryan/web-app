@@ -23,13 +23,23 @@ func LoginPage(res http.ResponseWriter, req *http.Request) {
 		log.Fatalln("error Opening login page", http.StatusNotFound)
 	}
 }
-func GetUser(res http.ResponseWriter, req *http.Request) {
-
+func Login(res http.ResponseWriter, req *http.Request) {
+	if req.Method == http.MethodPost {
+		var cook *http.Cookie
+		usr, err := data.LoginUser(res, req)
+		if err != nil {
+			cook, err = SessionValue("error", err.Error(), cook)
+		} else {
+			cook = Session("session")
+		}
+		tpl.ExecuteTemplate(res, "dashboard.html", usr)
+	}
 }
 func CheckUser(res http.ResponseWriter, req *http.Request) {
 	userID := req.FormValue("loginid")
 	var checkUser bool
 	users := data.GetAllUsers()
+	fmt.Println("*****getUser******")
 	for _, v := range users {
 		if userID == v.Email {
 			checkUser = true
@@ -46,7 +56,7 @@ func SignupPage(res http.ResponseWriter, req *http.Request) {
 	}
 }
 func CreateUser(res http.ResponseWriter, req *http.Request) {
-	sessionData := make(map[string]string)
+	// sessionData := make(map[string]string)
 
 	if req.Method == http.MethodPost {
 		// login part start
@@ -55,12 +65,13 @@ func CreateUser(res http.ResponseWriter, req *http.Request) {
 		// login part end
 		msg, err := data.SaveUser(req)
 		if err != nil {
-			sessionData, _ = SessionValue("error", err.Error())
+			session, _ = SessionValue("error", err.Error(), session)
 		} else {
 
-			sessionData, _ = SessionValue("msg", msg)
+			session, _ = SessionValue("msg", msg, session)
 		}
-		tpl.ExecuteTemplate(res, "loginPage.html", sessionData)
+		http.SetCookie(res, session)
+		tpl.ExecuteTemplate(res, "loginPage.html", session)
 	}
 }
 
@@ -74,8 +85,6 @@ func Logout(res http.ResponseWriter, req *http.Request) {
 		Value:  "",
 		MaxAge: -1,
 	}
-	for k := range SessionData {
-		delete(SessionData, k)
-	}
 	http.SetCookie(res, cook)
+	http.Redirect(res, req, "/", http.StatusOK)
 }

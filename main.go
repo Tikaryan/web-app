@@ -12,7 +12,7 @@ func main() {
 	jsHand := http.FileServer(http.Dir("./templates/resources/javascript/"))
 
 	http.HandleFunc("/", controller.LoginPage)
-	http.HandleFunc("/login", controller.GetUser)
+	http.HandleFunc("/login", controller.Login)
 	http.HandleFunc("/checkUser", controller.CheckUser)
 	http.HandleFunc("/signup", controller.SignupPage)
 	http.HandleFunc("/createUser", controller.CreateUser)
