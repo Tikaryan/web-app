@@ -55,18 +55,22 @@ func SaveUser(req *http.Request) (string, error) {
 }
 
 func LoginUser(res http.ResponseWriter, req *http.Request) (*models.User, error) {
-	userID := req.FormValue("email")
-	pass := []byte(req.FormValue("password"))
-
-	row := config.DB.QueryRow("Select * from go_users where email = $1 AND password $2", userID, pass)
+	userID := req.FormValue("loginid")
+	pass := req.FormValue("password")
+	fmt.Println("*****LoginUser******")
+	fmt.Println(userID, pass)
+	row := config.DB.QueryRow("Select * from go_users where email = $1 AND password = $2", userID, pass)
 	usr := models.User{}
+	fmt.Println("*****row******")
+	fmt.Println(row)
 	err := row.Scan(&usr.ID, &usr.Email, &usr.FirstName, &usr.LastName, &usr.City, &usr.State, &usr.Zipcode, &usr.Password) // order matters
 	switch {
 	case err == sql.ErrNoRows:
 		return nil, errors.New(http.StatusText(500))
 	case err != nil:
 		return nil, errors.New(http.StatusText(404))
-
 	}
+	fmt.Println("*****getuser******")
+	fmt.Println("user= ", usr.Password, usr.FirstName)
 	return &usr, nil
 }

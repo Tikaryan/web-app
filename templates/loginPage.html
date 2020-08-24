@@ -11,11 +11,11 @@
 
 <body>
        <div class="wrapper fadeInDown" >
-              <div class="alert alert-success alert-dismissible custom-succss" id="alert-suc" style="display: none;" role="alert">
+              <div class="alert alert-success alert-dismissible custom-succss" style="display: none;" id="alert-suc" role="alert">
                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                     <strong>Success! </strong>
+                     <strong>Success! </strong><p></p>
               </div>
-              <div class="alert alert-danger alert-dismissible custom-dangcss" id="alert-dang" style="display: none;" role="alert">
+              <div class="alert alert-danger alert-dismissible custom-dangcss" style="display: none;" id="alert-dang" role="alert">
                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                      <strong>Error! </strong>
               </div>
@@ -36,7 +36,7 @@
                                    <input type="password" name="password" id="password" class="fadeIn form-control third" required placeholder="password" required>
                             </div>
                             <div class="form-group">
-                                   <input type="submit" class="fadeIn fourth" value="Log In">
+                                   <input type="submit" class="fadeIn fourth" value="Log In" onclick="$(this).customSubmit(event)">
                             </div>
                      </form>
 
@@ -51,7 +51,11 @@
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
        <script src="resources/javascript/login.js"></script>
-
+       <script>
+              // $('form').submit(function(e){
+              //        e.preventDefault()
+              // })
+       </script>
 </body>
 
 </html>

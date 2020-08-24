@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+       <head>
+              <meta charset="utf-8">
+              <base href="/">
+              <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+              <link type="text/css" rel="stylesheet" href="resources/css/dashboard.css" />
+              <style>
+                     .wrapper {
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                            justify-content: center;
+                            width: 100%;
+                            min-height: 100%;
+                            padding: 20px;
+                     }
+                     #formContent {
+                            -webkit-border-radius: 10px 10px 10px 10px;
+                            border-radius: 10px 10px 10px 10px;
+                            background: #fff;
+                            padding: 30px;
+                            width: 90%;
+                            max-width: 450px;
+                            position: relative;
+                            padding: 0px;
+                            -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+                            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+                            text-align: center;
+                     }
+              </style>
+       </head>
+       <body>
+              {{template "navigation.html"}}
+              <div class="wrapper" >
+                     <div id="formContent">
+
+                     </div>
+              </div>
+       </body>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
